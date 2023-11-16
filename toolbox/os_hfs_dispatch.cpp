@@ -57,8 +57,13 @@
 #include "stackframe.h"
 #include "fs_spec.h"
 
-#if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 1050
-#define st_birthtime st_mtime
+#ifndef _DARWIN_FEATURE_ONLY_64_BIT_INODE
+#  ifndef _DARWIN_USE_64_BIT_INODE
+#    ifdef st_birthtime
+#      undef st_birthtime
+#    endif
+#    define st_birthtime st_mtime
+#  endif
 #endif
 
 using ToolBox::Log;
