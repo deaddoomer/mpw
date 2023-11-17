@@ -735,7 +735,7 @@ namespace fp = floating_point;
 			std::string tmp1 = to_string(s);
 			Log("     %s\n", tmp1.c_str());
 		}
-#if defined(__APPLE__) && defined(__GNUC__) && (!defined(MAC_OS_X_VERSION_10_5) || (MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_5))
+#if defined(__APPLE__) && defined(__GNUC__) && (!defined(MAC_OS_X_VERSION_10_6) || (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6))
 		// std::truct() not available on Tigerbrew's gcc 6.5
 		s = ::truncl(s);
 #else
